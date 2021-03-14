@@ -13,6 +13,8 @@
 		B12DF5E325FCD0AB00DB5DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12DF5E125FCD0AB00DB5DD5 /* Main.storyboard */; };
 		B12DF5E525FCD0AF00DB5DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B12DF5E425FCD0AF00DB5DD5 /* Assets.xcassets */; };
 		B12DF5E825FCD0AF00DB5DD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12DF5E625FCD0AF00DB5DD5 /* LaunchScreen.storyboard */; };
+		B16E8E3F25FD68F7009DA3DF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16E8E3D25FD68F7009DA3DF /* CustomTableViewCell.swift */; };
+		B16E8E4025FD68F7009DA3DF /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16E8E3E25FD68F7009DA3DF /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B12DF5E425FCD0AF00DB5DD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B12DF5E725FCD0AF00DB5DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B12DF5E925FCD0AF00DB5DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B16E8E3D25FD68F7009DA3DF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		B16E8E3E25FD68F7009DA3DF /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		B12DF5DA25FCD0AB00DB5DD5 /* Twitter-Home */ = {
 			isa = PBXGroup;
 			children = (
+				B16E8E3C25FD68B4009DA3DF /* Xib */,
 				B12DF5DB25FCD0AB00DB5DD5 /* AppDelegate.swift */,
 				B12DF5DD25FCD0AB00DB5DD5 /* SceneDelegate.swift */,
 				B12DF5DF25FCD0AB00DB5DD5 /* ViewController.swift */,
@@ -65,6 +70,15 @@
 				B12DF5E925FCD0AF00DB5DD5 /* Info.plist */,
 			);
 			path = "Twitter-Home";
+			sourceTree = "<group>";
+		};
+		B16E8E3C25FD68B4009DA3DF /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				B16E8E3D25FD68F7009DA3DF /* CustomTableViewCell.swift */,
+				B16E8E3E25FD68F7009DA3DF /* CustomTableViewCell.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +140,7 @@
 			files = (
 				B12DF5E825FCD0AF00DB5DD5 /* LaunchScreen.storyboard in Resources */,
 				B12DF5E525FCD0AF00DB5DD5 /* Assets.xcassets in Resources */,
+				B16E8E4025FD68F7009DA3DF /* CustomTableViewCell.xib in Resources */,
 				B12DF5E325FCD0AB00DB5DD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +154,7 @@
 			files = (
 				B12DF5E025FCD0AB00DB5DD5 /* ViewController.swift in Sources */,
 				B12DF5DC25FCD0AB00DB5DD5 /* AppDelegate.swift in Sources */,
+				B16E8E3F25FD68F7009DA3DF /* CustomTableViewCell.swift in Sources */,
 				B12DF5DE25FCD0AB00DB5DD5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
