@@ -46,9 +46,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             createTweetView.receiveTweetItem = tweetItem
         }
     }
-    
-    // ＋ボタン押下時の処理
-    @IBAction func creationTweetButton(_ sender: Any) {
-        print(tweetItem.count)
-    }
 }
