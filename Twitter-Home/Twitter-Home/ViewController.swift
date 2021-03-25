@@ -8,31 +8,47 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+  
     @IBOutlet weak var tweetTableView: UITableView!
     @IBOutlet weak var postTweetButton: UIButton!
     
-    let item = ["Cell 1\nCell 1\nCell 1\nCell 1", "Cell 2", "Cell 3", "Cell 4", "Cell 5", "Cell 6", "Cell 7", "Cell 8", "Cell 9", "Cell 10", "Cell 11", "Cell 12",]
+    var test = "test"
+    
+    var tweetItem = [
+        ["contributorName": "kazamidori", "content": "風見鶏"],
+        ["contributorName": "bado", "content": "ばどばど"]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tweetTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        
         // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return item.count
+        return tweetItem.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomTableViewCell
-        cell.tweetContentLabel.text = self.item[indexPath.row]
+        cell.contributorNameLabel.text = self.tweetItem[indexPath.row]["contributorName"]! as String
+        cell.tweetContentLabel.text = self.tweetItem[indexPath.row]["content"]! as String
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPostTweet" {
+            let createTweetView = segue.destination as! createTweetViewController
+            createTweetView.receiveTweetItem = tweetItem
+        }
+    }
+    
+    // ＋ボタン押下時の処理
+    @IBAction func creationTweetButton(_ sender: Any) {
+        print(tweetItem.count)
+    }
 }
-
