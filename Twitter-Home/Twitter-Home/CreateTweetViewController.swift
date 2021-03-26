@@ -9,42 +9,44 @@ import UIKit
 
 class createTweetViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var tweetContentView: UITextView!
-    @IBOutlet weak var postTweetButton: UIButton!
+    @IBOutlet weak private var tweetContentView: UITextView!
+    @IBOutlet weak private var postTweetButton: UIButton!
     
-    var receiveTweetItem: [[String:String]]?
+    public var receiveTweetItem: [[String:String]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tweetContentView.delegate = self
-        self.postTweetButton.layer.cornerRadius = 15.0
-        // 画面遷移時、ツイートボタンを押せないようにする
-        postTweetButton.backgroundColor = UIColor.systemGray
-        postTweetButton.isEnabled = false
+        delegateSelf()
+        roundPostTweetButton()
+        notPressTweetButton()
         // Do any additional setup after loading the view.
+    }
+    
+    func delegateSelf() {
+        tweetContentView.delegate = self
+    }
+    func roundPostTweetButton() {
+        self.postTweetButton.layer.cornerRadius = 15.0
+    }
+    // 画面遷移時、ツイートボタンを押せないようにする
+    func notPressTweetButton() {
+        postTweetButton.backgroundColor = .systemGray
+        postTweetButton.isEnabled = false
     }
 
     @IBAction func cancelButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     @IBAction func postTweet(_ sender: Any) {
-        receiveTweetItem?.insert(["contributorName" : "おかざわ", "content" : String(tweetContentView.text)], at: 0)
-        let vc = self.presentingViewController as! ViewController
-        vc.tweetItem = receiveTweetItem!
-        vc.tweetTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .none)
-        self.dismiss(animated: true, completion: nil)
+        submitTweet()
     }
     
     // ツイート内容が入力されていない場合、ツイートできないようにする
     func textViewDidChange(_ textView: UITextView) {
-        if tweetContentView.text.count == 0 {
-            postTweetButton.backgroundColor = UIColor.systemGray
-            postTweetButton.isEnabled = false
-        } else {
-            postTweetButton.backgroundColor = UIColor.systemBlue
-            postTweetButton.isEnabled = true
-        }
+        let isTweetNone = tweetContentView.text.count == 0
+        postTweetButton.backgroundColor = isTweetNone ? .systemGray : .systemBlue
+        postTweetButton.isEnabled = !isTweetNone
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -60,6 +62,14 @@ class createTweetViewController: UIViewController, UITextViewDelegate {
             tweetContentView.textColor = .darkGray
         }
     }
+    
+    func submitTweet() {
+        receiveTweetItem?.insert(["contributorName" : "おかざわ", "content" : String(tweetContentView.text)], at: 0)
+        let vc = self.presentingViewController as! ViewController
+        vc.tweetItem = receiveTweetItem!
+        vc.tweetTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        self.dismiss(animated: true)
+    }
     /*
     // MARK: - Navigation
 
@@ -69,5 +79,4 @@ class createTweetViewController: UIViewController, UITextViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

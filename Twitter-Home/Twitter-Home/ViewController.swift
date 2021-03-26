@@ -10,9 +10,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var tweetTableView: UITableView!
-    @IBOutlet weak var postTweetButton: UIButton!
-    
-    var test = "test"
+    @IBOutlet weak private var postTweetButton: UIButton!
     
     var tweetItem = [
         ["contributorName": "kazamidori", "content": "風見鶏"],
@@ -21,8 +19,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tweetTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        tweetTableViewRegister()
         // Do any additional setup after loading the view.
+    }
+    
+    func tweetTableViewRegister() {
+        tweetTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

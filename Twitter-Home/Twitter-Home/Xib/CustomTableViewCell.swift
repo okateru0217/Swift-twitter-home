@@ -8,48 +8,38 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-    @IBOutlet weak var contributorIcon: UIImageView!
     @IBOutlet weak var contributorNameLabel: UILabel!
     @IBOutlet weak var tweetContentLabel: UILabel!
-    @IBOutlet weak var reTweetIcon: UIButton!
-    @IBOutlet weak var niceIcon: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+    @IBOutlet weak private var reTweetIcon: UIButton!
+    @IBOutlet weak private var niceIcon: UIButton!
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
     // リツイートボタン押下時の処理
-    var isReTweetIconColor = true
+    private var isReTweetIconColor = true
     @IBAction func reTweetButton(_ sender: Any) {
-        if isReTweetIconColor {
-            reTweetIcon.tintColor = UIColor.systemGreen
-            isReTweetIconColor.toggle()
-        } else {
-            reTweetIcon.tintColor = UIColor.lightGray
-            isReTweetIconColor.toggle()
-        }
+        toggleReTweetIconLook()
     }
     
     // いいねボタン押下時の処理
-    var isNiceIconColor = true
+    private var isNiceIconColor = true
     @IBAction func niceButton(_ sender: Any) {
+        toggleNiceButtonLook()
+    }
+    
+    func toggleReTweetIconLook() {
+        reTweetIcon.tintColor = isReTweetIconColor ? .systemGreen : .lightGray
+        isReTweetIconColor.toggle()
+    }
+    
+    func toggleNiceButtonLook() {
         let heart = UIImage(systemName: "heart")
         let heartFill = UIImage(systemName: "heart.fill")
-        if isNiceIconColor {
-            niceIcon.setImage(heartFill, for: .normal)
-            niceIcon.tintColor = UIColor.systemPink
-            isNiceIconColor.toggle()
-        } else {
-            niceIcon.setImage(heart, for: .normal)
-            niceIcon.tintColor = UIColor.lightGray
-            isNiceIconColor.toggle()
-        }
+        isNiceIconColor ? niceIcon.setImage(heartFill, for: .normal) : niceIcon.setImage(heart, for: .normal)
+        niceIcon.tintColor = isNiceIconColor ? .systemPink : .lightGray
+        isNiceIconColor.toggle()
     }
 }

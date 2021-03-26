@@ -100,7 +100,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="contributorIcon" destination="AW6-70-bvt" id="eD6-EV-rkO"/>
                 <outlet property="contributorNameLabel" destination="g6f-a3-aVC" id="kHw-mn-IxL"/>
                 <outlet property="niceIcon" destination="VHu-FR-3TQ" id="5n3-dn-StW"/>
                 <outlet property="reTweetIcon" destination="GpG-ex-eo9" id="xjx-3P-0ih"/>
